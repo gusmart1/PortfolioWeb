@@ -1,3 +1,4 @@
+<style>
 * {
     margin: 0;
     padding: 0;
@@ -6,24 +7,28 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #673ab7;
+    background: white;
     font-family: monospace;
+    gap: 100px; /* space between the two circles */
 }
 
+/* FIRST CIRCLE */
 .circle {
     transform-style: preserve-3d;
-    animation: animate 8s linear infinite;
+    animation: animate1 8s linear infinite;
 }
 
-@keyframes animate
-   {
-    0%
-    {
-    transform: perspective(1000px) rotateY(360deg) rotateX(15deg);
-}
+@keyframes animate1 {
+    0% {
+        transform: perspective(1000px) rotateY(0deg) rotateX(15deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateY(360deg) rotateX(15deg);
+    }
 }
 
 .circle .word {
@@ -35,12 +40,53 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    color: #35146f;
-    font-size: 4em;
-    padding: 5px 12px;
-    border-top: 4px solid white;
-    border-bottom: 4px solid white;
+    color: black;
+    font-size: 3em;
+    padding: 5px 10px;
     transform-style: preserve-3d;
-    transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(250px);
+    transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(200px);
 }
 
+
+
+/* SECOND CIRCLE */
+.circle3 {
+    transform-style: preserve-3d;
+    animation: animate1 8s linear infinite;
+}
+
+.circle3 .word {
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.circle3 .char {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    color: black;
+    font-size: 3em;
+    padding: 5px 10px;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(200px);
+}
+
+
+/*hovering colors and pause*/
+.circle3:hover .char {
+    color: blue;
+    transition: color 0.3s ease;
+}
+.circle:hover .char {
+    color: red;
+    transition: color 0.3s ease;
+}
+
+
+.circle:hover,
+.circle3:hover {
+    animation-play-state: paused;
+}
+
+
+</style>
